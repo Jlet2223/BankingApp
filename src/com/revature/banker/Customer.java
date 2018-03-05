@@ -192,6 +192,7 @@ public class Customer implements Banker, Serializable {
 				System.out.println("How much would you like to transfer?");
 				int amount = acc.nextInt();
 				withdrawfrom(this,customers.get(customer),from ,to,amount);
+				System.out.println("Funds Transfered");
 			}
 		}
 
@@ -234,46 +235,7 @@ public class Customer implements Banker, Serializable {
 		
 	}
 	
-	///// Deposit the requested amount into the user's account, the only way that the user can't deposit into a account is if the account does not exist
- 	private void desposit(String input, int amount) {
-		if(existaccount(input,getAccounts()) == - 1){
-			System.out.println("account does not exist");
-			LoggingUtil.logWarn("Account was Not Found.");
-		}else{
-			if(getAccounts().get((existaccount(input,getAccounts()))).getJoint().equals("")){
-				getAccounts().get((existaccount(input,getAccounts()))).setBalance(getAccounts().get((existaccount(input,getAccounts()))).getBalance() + amount);
-				System.out.println("Funds Deposited");
-				update(this);
-			}else{
-				Customer join = findcustomer(username);
-				getAccounts().get((existaccount(input,getAccounts()))).setBalance(getAccounts().get((existaccount(input,getAccounts()))).getBalance() + amount);
-				join.getAccounts().get((existaccount(input,join.getAccounts()))).setBalance(join.getAccounts().get((existaccount(input,join.getAccounts()))).getBalance() + amount);
-				System.out.println("Funds Deposited");
-				update(this);
-				update(join);
-			}
-		}
-
-	}
-	
 	//////////For transfering funds////////////////
- 	///// Transfer method for depositing in to an account which after calling the withdrawfrom method will be the end of the transfer transaction 
- 	///// Works the same as the deposit method
-	public  void depositto(Customer customer,int amount,String  accountname) {
-		if(getAccounts().get((existaccount(accountname,getAccounts()))).getJoint().equals("")){
-			customer.getAccounts().get((existaccount(accountname,customer.getAccounts()))).setBalance(customer.getAccounts().get((existaccount(accountname,customer.getAccounts()))).getBalance() +amount);
-			System.out.println("Funds transfered");
-			update(customer);
-		}else{
-			Customer join = findcustomer(this.username);
-			customer.getAccounts().get((existaccount(accountname,customer.getAccounts()))).setBalance(customer.getAccounts().get((existaccount(accountname,customer.getAccounts()))).getBalance() +amount);
-			join.getAccounts().get((existaccount(accountname,join.getAccounts()))).setBalance(join.getAccounts().get((existaccount(accountname,join.getAccounts()))).getBalance() + amount);
-			System.out.println("Funds transfered");
-			update(customer);
-			update(join);
-		}
-		
-	}
 	///// Called after the transfer method that would take the input and determine whether it is possible to make a transfer into an account
 	///// works the same as the normal withdraw method. except it calls the depositto method it the withdraw is possible;
 	public  void withdrawfrom(Customer customer, Customer tocustomer, String account, String toaccount, int amount) {
@@ -288,18 +250,37 @@ public class Customer implements Banker, Serializable {
 				if(customer.getAccounts().get((existaccount(account,customer.getAccounts()))).getJoint().equals("")){
 					customer.getAccounts().get((existaccount(account,customer.getAccounts()))).setBalance(customer.getAccounts().get((existaccount(account,customer.getAccounts()))).getBalance() -amount);
 					update(customer);
-					depositto(tocustomer, amount, toaccount);
+					System.out.println("Funds Withdraw");
+					depositTo(tocustomer, amount, toaccount);
 				}else{
 					Customer join = findcustomer(this.username);
 					customer.getAccounts().get((existaccount(account,customer.getAccounts()))).setBalance(customer.getAccounts().get((existaccount(account,customer.getAccounts()))).getBalance() -amount);
 					join.getAccounts().get((existaccount(account,join.getAccounts()))).setBalance(join.getAccounts().get((existaccount(account,join.getAccounts()))).getBalance() - amount);
 					update(customer);
 					update(join);
-					depositto(tocustomer, amount, toaccount);					
+					System.out.println("Funds Withdrawn");
+					depositTo(tocustomer, amount, toaccount);					
 				}
 		
 			}
 				
+		}
+		
+	}
+	
+ 	///// Transfer method for depositing in to an account.
+	public  void depositTo(Customer customer,int amount,String  accountname) {
+		if(getAccounts().get((existaccount(accountname,getAccounts()))).getJoint().equals("")){
+			customer.getAccounts().get((existaccount(accountname,customer.getAccounts()))).setBalance(customer.getAccounts().get((existaccount(accountname,customer.getAccounts()))).getBalance() +amount);
+			System.out.println("Funds Deposited");
+			update(customer);
+		}else{
+			Customer join = findcustomer(this.username);
+			customer.getAccounts().get((existaccount(accountname,customer.getAccounts()))).setBalance(customer.getAccounts().get((existaccount(accountname,customer.getAccounts()))).getBalance() +amount);
+			join.getAccounts().get((existaccount(accountname,join.getAccounts()))).setBalance(join.getAccounts().get((existaccount(accountname,join.getAccounts()))).getBalance() + amount);
+			System.out.println("Funds Deposited");
+			update(customer);
+			update(join);
 		}
 		
 	}
@@ -345,7 +326,12 @@ public class Customer implements Banker, Serializable {
 			String account = com.nextLine().toUpperCase();
 			System.out.println("How much would you like to deposit?");
 			int amount = com.nextInt();
-			desposit(account,amount);
+			if(existaccount(input,getAccounts()) == - 1){
+				System.out.println("account does not exist");
+				LoggingUtil.logWarn("Account was Not Found.");
+			}else{
+				depositTo(this,amount, account);
+			}
 			commands();
 
 		}else if (input.equals("WITHDRAW") ){

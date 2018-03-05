@@ -124,7 +124,7 @@ public class CustomerTest {
 		Accounts testaccount = new Accounts("TESTER" , "ESTER", 100 ,"");
 		customers.get(0).getAccounts().add(testaccount);
 		Serial.customerserial(customers);
-		Admin.deposit("TESTER", 150);
+		customers.get(0).depositTo(customers.get(0), 150, "TESTER");
 		customers = Serial.customerdeserial();
 		assertEquals(250 ,customers.get(0).getAccounts().get(0).getBalance());
 		Admin admin = new Admin();
