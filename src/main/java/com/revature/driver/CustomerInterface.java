@@ -110,7 +110,7 @@ public class CustomerInterface {
 		}else{
 			Scanner com = new Scanner(System.in);
 			for(int i = 0; i < account.size();i++){
-				System.out.print(">>>>>>>>>" +(i+1) + "> " + account.get(i).getName() + " ||| Balance: " + account.get(i).getBalance() + "<<<<<<<<<");
+				System.out.println(">>>>>>>>>" +(i+1) + "> " + account.get(i).getName() + " ||| Balance: " + account.get(i).getBalance() + "<<<<<<<<<");
 			}
 			System.out.println("What account would you like to deposit to?");
 			int input = com.nextInt();
@@ -146,7 +146,7 @@ public class CustomerInterface {
 		}else{
 			Scanner com = new Scanner(System.in);
 			for(int i = 0; i < account.size();i++){
-				System.out.print(">>>>>>>>>" +(i+1) + "> " + account.get(i).getName() + " ||| Balance: " + account.get(i).getBalance() + "<<<<<<<<<");
+				System.out.println(">>>>>>>>>" +(i+1) + "> " + account.get(i).getName() + " ||| Balance: " + account.get(i).getBalance() + "<<<<<<<<<");
 			}
 			System.out.println("What account would you like to withdraw from?");
 			int input = com.nextInt();
@@ -189,7 +189,7 @@ public class CustomerInterface {
 		}else{
 			Scanner com = new Scanner(System.in);
 			for(int i = 0; i < account.size();i++){
-				System.out.print(">>>>>>>>>" +(i+1) + "> " + account.get(i).getName() + " ||| Balance: " + account.get(i).getBalance() + "<<<<<<<<<");
+				System.out.println(">>>>>>>>>" +(i+1) + "> " + account.get(i).getName() + " ||| Balance: " + account.get(i).getBalance() + "<<<<<<<<<");
 			}
 			System.out.println("What account would you like to transfer from?");
 			int input = com.nextInt();
@@ -210,7 +210,7 @@ public class CustomerInterface {
 					System.out.println("No accounts to deposit to.");
 				}else{
 					for(int j = 0; j < allaccount.size();j++){
-						System.out.print(">>>>>>>>>" +(j+1) + "> " + account.get(j).getName()  + "<<<<<<<<<");
+						System.out.println(">>>>>>>>>" +(j+1) + "> " + allaccount.get(j).getName()  + "<<<<<<<<<");
 					}
 					System.out.println("What account would you like to transfer from?");
 					int input2 = com.nextInt();

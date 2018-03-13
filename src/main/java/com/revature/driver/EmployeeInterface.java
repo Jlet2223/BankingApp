@@ -318,7 +318,7 @@ public class EmployeeInterface {
 		}else{
 			Scanner com = new Scanner(System.in);
 			for(int i = 0; i < allAccounts.size();i++){
-				System.out.print(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
+				System.out.println(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
 			}
 			System.out.println("What account would you like to join?");
 			int input = com.nextInt();
@@ -356,7 +356,7 @@ public class EmployeeInterface {
 		}else{
 			Scanner com = new Scanner(System.in);
 			for(int i = 0; i < allAccounts.size();i++){
-				System.out.print(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
+				System.out.println(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
 			}
 			System.out.println("What account would you like to approve?");
 			int input = com.nextInt();
@@ -379,7 +379,7 @@ public class EmployeeInterface {
 		}else{
 			Scanner com = new Scanner(System.in);
 			for(int i = 0; i < allAccounts.size();i++){
-				System.out.print(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
+				System.out.println(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
 			}
 			System.out.println("What account would you like to cancel?");
 			int input = com.nextInt();
@@ -401,7 +401,7 @@ public class EmployeeInterface {
 		}else{
 			Scanner com = new Scanner(System.in);
 			for(int i = 0; i < allAccounts.size();i++){
-				System.out.print(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
+				System.out.println(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
 			}
 			System.out.println("What account would you like to freeze?");
 			int input = com.nextInt();
@@ -423,7 +423,7 @@ public class EmployeeInterface {
 		}else{
 			Scanner com = new Scanner(System.in);
 			for(int i = 0; i < allAccounts.size();i++){
-				System.out.print(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
+				System.out.println(">>>>>>>>>" +(i+1) + "> " + allAccounts.get(i).getName() );
 			}
 			System.out.println("What account would you like to unfreeze?");
 			int input = com.nextInt();
@@ -459,7 +459,7 @@ public class EmployeeInterface {
 		CustomersDao custom = new CustomersDaoImpl();
 		List<Customer> allCustomer = custom.getAllCustomers();
 		for(int i = 0; i < allCustomer.size(); i++){
-			System.out.print(">>>>>>>>>" +(i+1) + "> " + allCustomer.get(i).getUsername() + " ||| Name: " + allCustomer.get(i).getFirstname() + " " + allCustomer.get(i).getLastname()  );
+			System.out.println(">>>>>>>>>" +(i+1) + "> " + allCustomer.get(i).getUsername() + " ||| Name: " + allCustomer.get(i).getFirstname() + " " + allCustomer.get(i).getLastname()  );
 		}
 	}
 }
