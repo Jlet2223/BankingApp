@@ -8,7 +8,7 @@ The Employee can view accounts and user information.
 The Admin can do everything the Employee can also approve or deny account requests, and make Withdraw, Deposit, and Transfer from any account.
 The Admin can also freeze, un-freeze, and cancel accounts;
 
-All Ready Set up users and accounts: *All input is case-insensitive* 
+All Ready Set up users and accounts: *All input is case-insensitiv 
 
 	Customer - Password
 	* jl2569			  -  147753
